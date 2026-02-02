@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Presentation, { Slide } from '../../common/presentation';
+import '../../styles/fpv.css';
 
 const FPV: React.FC = () => {
   const [helloMessage, setHelloMessage] = useState('');
@@ -75,10 +76,7 @@ const FPV: React.FC = () => {
   ];
 
   return (
-    <Presentation 
-      slides={slides} 
-      title="FPV Drone Presentation" 
-    />
+    <Presentation slides={slides} />
   );
 };
 

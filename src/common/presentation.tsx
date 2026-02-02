@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
+import '../styles/presentation.css';
 
 export interface Slide {
   id: string;
@@ -8,10 +9,9 @@ export interface Slide {
 
 export interface PresentationProps {
   slides: Slide[];
-  title?: string;
 }
 
-const Presentation: React.FC<PresentationProps> = ({ slides, title }) => {
+const Presentation: React.FC<PresentationProps> = ({ slides }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const totalSlides = slides.length;
 
@@ -39,10 +39,12 @@ const Presentation: React.FC<PresentationProps> = ({ slides, title }) => {
       switch(event.key) {
         case 'ArrowLeft':
         case 'ArrowUp':
+        case 'PageUp':
           previousSlide();
           break;
         case 'ArrowRight':
         case 'ArrowDown':
+        case 'PageDown':
         case ' ': // Space bar
           event.preventDefault();
           nextSlide();
@@ -61,14 +63,6 @@ const Presentation: React.FC<PresentationProps> = ({ slides, title }) => {
       document.removeEventListener('keydown', handleKeyDown);
     };
   }, [nextSlide, previousSlide, goToSlide, totalSlides]);
-
-  // 初始化日志
-  useEffect(() => {
-    console.log(`🎯 ${title || 'Presentation'} initialized!`);
-    console.log('📊 Total slides:', totalSlides);
-    console.log('⌨️  Use arrow keys or space to navigate');
-    console.log('🏠 Press Home/End to go to first/last slide');
-  }, [totalSlides, title]);
 
   const progressPercentage = ((currentSlide + 1) / totalSlides) * 100;
 
@@ -92,27 +86,6 @@ const Presentation: React.FC<PresentationProps> = ({ slides, title }) => {
           {slide.content}
         </div>
       ))}
-
-      {/* Navigation */}
-      <div className="navigation">
-        <button 
-          className="nav-btn"
-          onClick={previousSlide}
-          disabled={currentSlide === 0}
-        >
-          ← 上一页
-        </button>
-        <span className="slide-counter">
-          {currentSlide + 1} / {totalSlides}
-        </span>
-        <button 
-          className="nav-btn"
-          onClick={nextSlide}
-          disabled={currentSlide === totalSlides - 1}
-        >
-          下一页 →
-        </button>
-      </div>
     </div>
   );
 };
