@@ -1,17 +1,17 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import '../styles/presentation.css';
 
-export interface Slide {
+export interface ISlide {
   id: string;
   title: string;
   content: React.ReactNode;
 }
 
-export interface PresentationProps {
-  slides: Slide[];
+export interface IPresentationProps {
+  slides: ISlide[];
 }
 
-const Presentation: React.FC<PresentationProps> = ({ slides }) => {
+const Presentation: React.FC<IPresentationProps> = ({ slides }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const totalSlides = slides.length;
 
@@ -142,6 +142,11 @@ const Presentation: React.FC<PresentationProps> = ({ slides }) => {
           className="progress" 
           style={{ width: `${progressPercentage}%` }}
         ></div>
+      </div>
+
+      {/* Page number */}
+      <div className="page-number">
+        {currentSlide + 1} / {totalSlides}
       </div>
 
       {/* Slides */}

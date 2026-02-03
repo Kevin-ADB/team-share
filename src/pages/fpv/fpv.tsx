@@ -1,9 +1,9 @@
 import React from 'react';
-import Presentation, { Slide } from '../../common/presentation';
+import Presentation, { ISlide } from '../../common/presentation';
 import '../../styles/fpv.css';
 
 const FPV: React.FC = () => {
-  const slides: Slide[] = [
+  const slides: ISlide[] = [
     {
       id: 'slide-1',
       title: '警察来电',
@@ -182,19 +182,18 @@ const FPV: React.FC = () => {
     },
     {
       id: 'slide-5',
-      title: '多飞行模式无人机',
+      title: '无人机的飞行模式',
       content: (
         <div className="slide-content">
           <div className="slide-title">
-            <h1>多飞行模式无人机</h1>
+            <h1>无人机的操控模式</h1>
           </div>
           <div className="multi-mode-container">
             <div className="mode-explanation">
               <div className="explanation-card">
-                <h3>🔄 多数无人机支持多种飞行模式的切换</h3>
-                <p>FPV 并非独立的无人机类型，而是可以作为多飞行模式无人机的一种<strong>操控模式</strong>。</p>
+                <h3>🔄 FPV 只是一种“操控模式”</h3>
+                <p>市面上的成品无人机通常支持多种操作模式，但支持单一操作模式的无人机中，FPV 更为常见。</p>
               </div>
-              
               <div className="explanation-card">
                 <h3>🌰 应用场景</h3>
                 <div className="scenario-examples">
@@ -215,11 +214,40 @@ const FPV: React.FC = () => {
     },
     {
       id: 'slide-6',
-      title: '入坑指"难"',
+      title: '入坑指"难" -- 人财两空',
       content: (
         <div className="slide-content">
           <div className="slide-title">
-            <h1>入坑指"难"</h1>
+            <h1>入坑指"难" -- 人财两空</h1>
+          </div>
+          <div className="comparison-table-container">
+            <div className="process-steps">
+              <div className="step-card">
+                <div className="step-number">1</div>
+                <div className="step-content">
+                  <h3>没朋友</h3>
+                  <p>超小众，技术宅居多</p>
+                </div>
+              </div>
+              <div className="step-card">
+                <div className="step-number">2</div>
+                <div className="step-content">
+                  <h3>没钱</h3>
+                  <p>炸机、飞丢、多设备</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'slide-7',
+      title: '入坑指"难" -- 猫一天狗一天',
+      content: (
+        <div className="slide-content">
+          <div className="slide-title">
+            <h1>入坑指"难" -- 猫一天狗一天</h1>
           </div>
           <div className="comparison-table-container">
             <div className="comparison-table">
@@ -278,6 +306,59 @@ const FPV: React.FC = () => {
               </div>
             </div>
           </div>
+      )
+    },
+    {
+      id: 'slide-8',
+      title: '入坑指"难" -- 入坑拢共分三步',
+      content: (
+        <div className="slide-content">
+          <div className="slide-title">
+            <h1>入坑指"难" -- 入坑拢共分三步</h1>
+          </div>
+          <div className="comparison-table-container">
+            <div className="process-steps">
+              <div className="step-card">
+                <div className="step-number">1</div>
+                <div className="step-content">
+                  <h3>如入</h3>
+                  <div className="step-description">
+                    <p>买个手柄用模拟器练习</p>
+                    <a href="https://www.bilibili.com/video/BV1ZPTTzEER7" target="_blank" rel="noopener noreferrer">新人入门必练模拟器</a>
+                  </div>
+                </div>
+              </div>
+              <div className="step-card">
+                <div className="step-number">2</div>
+                <div className="step-content">
+                  <h3>算入</h3>
+                  <p>买个眼镜，耐摔的无人机起飞</p>
+                </div>
+              </div>
+              <div className="step-card">
+                <div className="step-number">3</div>
+                <div className="step-content">
+                  <h3>真入</h3>
+                  <p>DIY、花飞、竞速、裸眼，等等</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'slide-9',
+      title: '操控与原理',
+      content: (
+        <div className="slide-content">
+          <div className="slide-title">
+            <h1>操控与原理</h1>
+          </div>
+          <div className="comparison-table-container">
+            {/* 内容待添加 */}
+          </div>
+        </div>
       )
     }
   ];
