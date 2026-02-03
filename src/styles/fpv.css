@@ -1,92 +1,187 @@
-/* FPV Drone Presentation Specific Styles */
+/* FPV Presentation Specific Styles */
 
 /* FPV specific background */
 body {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #a0b0ff 0%, #bb88ee 100%);
 }
 
-/* FPV specific slide content styling */
-.slide h1 {
-    font-size: 3.5rem;
+/* Universal Slide Title */
+.slide-title {
+    text-align: center;
+    padding-top: 3rem;
     margin-bottom: 2rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    flex-shrink: 0;
 }
 
-.slide h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-    color: #ffd93d;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+.slide-title h1 {
+    font-size: 3.5rem;
+    margin: 0;
+    color: #222222;
+    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.8);
+    font-weight: bold;
 }
 
-.slide ul li::before {
-    content: "🚁";
+/* Slide Content Area */
+.slide-content {
+    padding: 0 3rem 3rem 3rem;
+}
+
+/* Phone Call Screen */
+.phone-call-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex: 1;
+}
+
+.phone-frame {
+    width: 350px;
+    height: 650px;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    border-radius: 40px;
+    padding: 30px 20px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    border: 8px solid #333;
+}
+
+.phone-frame::before {
+    content: '';
     position: absolute;
-    left: 0;
-    top: 0;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: #555;
+    border-radius: 2px;
 }
 
-.author {
-    margin-top: 3rem;
-    font-size: 1.1rem;
-    opacity: 0.8;
-}
-
-/* Hello World Demo specific styles */
-.demo-container {
-    margin: 2rem 0;
-    padding: 2rem;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-#hello-btn {
-    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-    color: white;
-    border: none;
-    padding: 1rem 2rem;
+.phone-status {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     font-size: 1.2rem;
-    border-radius: 50px;
+    color: white;
+    padding: 10px 0;
+}
+
+.call-info {
+    text-align: center;
+    color: white;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.caller-avatar {
+    font-size: 8rem;
+    margin-bottom: 2rem;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+.caller-name {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.call-status {
+    font-size: 1.5rem;
+    opacity: 0.8;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 0.4; }
+}
+
+.call-actions {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.decline-btn, .accept-btn {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
     cursor: pointer;
     transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: bold;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
 }
 
-#hello-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-    background: linear-gradient(45deg, #ff5252, #26c6da);
+.decline-btn {
+    background: linear-gradient(135deg, #ff4444 0%, #cc0000 100%);
+    transform: rotate(135deg);
 }
 
-#hello-btn:active {
-    transform: translateY(0);
+.accept-btn {
+    background: linear-gradient(135deg, #44ff44 0%, #00cc00 100%);
 }
 
-#hello-output {
-    margin: 2rem 0;
-    min-height: 80px;
-    transition: opacity 0.5s ease;
+.decline-btn:hover, .accept-btn:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.4));
 }
 
-.hello-message {
-    background: rgba(255, 215, 61, 0.2);
-    padding: 1.5rem;
-    border-radius: 15px;
-    border: 2px solid #ffd93d;
+.decline-btn:hover {
+    transform: scale(1.1) rotate(135deg);
 }
 
-.hello-message h3 {
+/* FPV Introduction Page */
+.fpv-intro {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.fpv-definition {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    width: 100%;
+}
+
+.definition-item {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 2.5rem;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.definition-item h3 {
     font-size: 2rem;
-    margin-bottom: 0.5rem;
-    color: #ffd93d;
+    margin-bottom: 1.5rem;
+    color: #222222;
+}
+
+.definition-item p {
+    font-size: 1.5rem;
+    line-height: 1.7;
+    color: #333333;
+    margin: 0;
+}
+
+.definition-item p {
+    text-align: center;
 }
 
 /* FPV specific progress bar colors */
@@ -94,13 +189,382 @@ body {
     background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1);
 }
 
-/* FPV specific responsive design */
+/* Comparison Table Styles */
+.comparison-table-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.comparison-table {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    width: 100%;
+}
+
+.comparison-table table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.comparison-table th {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.05rem;
+    border: 1px solid #ddd;
+}
+
+.comparison-table th:first-child {
+    border-top-left-radius: 10px;
+    width: 15%;
+}
+
+.comparison-table th:nth-child(2) {
+    width: 42.5%;
+}
+
+.comparison-table th:last-child {
+    border-top-right-radius: 10px;
+    width: 42.5%;
+}
+
+.comparison-table td {
+    padding: 1.2rem;
+    border: 1px solid #ddd;
+    vertical-align: middle;
+    line-height: 1.5;
+    color: #333;
+    font-size: 0.95rem;
+}
+
+.comparison-table td:first-child {
+    background: rgba(102, 126, 234, 0.1);
+    font-weight: bold;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.comparison-table tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+}
+
+.comparison-table tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+}
+
+.scenario-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.scenario-list p {
+    margin: 0;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.scenario-list p:last-child {
+    border-bottom: none;
+}
+
+/* Special content styling for policy table */
+.airspace-info p, .standards-info p {
+    margin: 0.5rem 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    padding: 0;
+    border-bottom: none;
+}
+
+.airspace-info p:last-child, .standards-info p:last-child {
+    margin-bottom: 0;
+}
+
+/* Multi-Mode Drone Styles */
+.multi-mode-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.mode-explanation {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    max-width: 66.67vw;
+    margin: 0 auto;
+}
+
+.explanation-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    text-align: left;
+    flex: 1;
+}
+
+.explanation-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #222222;
+    text-align: center;
+}
+
+.explanation-card p {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    color: #333333;
+    margin: 0;
+    text-align: center;
+}
+
+.scenario-examples {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 1rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.scenario-item {
+    background: rgba(102, 126, 234, 0.05);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border-left: 4px solid #667eea;
+}
+
+.scenario-item h4 {
+    font-size: 1.3rem;
+    margin: 0 0 0.5rem 0;
+    color: #222222;
+    text-align: left;
+}
+
+.scenario-item p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: #333333;
+    margin: 0;
+    text-align: left;
+}
+
+.mode-example {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.mode-example h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: #222222;
+    text-align: center;
+}
+
+.example-scenario {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.scenario-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 1rem 2rem;
+    background: rgba(102, 126, 234, 0.05);
+    border-radius: 10px;
+    border-left: 4px solid #667eea;
+}
+
+.step-number {
+    flex-shrink: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.step-content h4 {
+    font-size: 1.4rem;
+    margin: 0 0 0.5rem 0;
+    color: #222222;
+    text-align: left;
+}
+
+.step-content p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: #333333;
+    margin: 0;
+}
+
+/* Phone responsive design */
 @media (max-width: 768px) {
-    .slide h1 {
+    .phone-frame {
+        width: 280px;
+        height: 520px;
+        padding: 25px 15px;
+    }
+    
+    .caller-avatar {
+        font-size: 6rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .caller-name {
+        font-size: 2.5rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .call-status {
+        font-size: 1.2rem;
+    }
+    
+    .decline-btn, .accept-btn {
+        width: 60px;
+        height: 60px;
+        font-size: 1.8rem;
+    }
+    
+    /* Universal title responsive */
+    .slide-title {
+        padding-top: 2rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .slide-title h1 {
         font-size: 2.5rem;
     }
     
-    .slide h2 {
-        font-size: 2rem;
+    /* Slide content responsive */
+    .slide-content {
+        padding: 0 1rem 2rem 1rem;
+    }
+    
+    /* FPV intro responsive */
+    .fpv-intro {
+        padding: 0 1rem;
+    }
+    
+    .fpv-definition {
+        gap: 2rem;
+    }
+    
+    .definition-item {
+        padding: 2rem;
+    }
+    
+    .definition-item h3 {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+    }
+    
+    .definition-item p {
+        font-size: 1.3rem;
+    }
+    
+    /* Comparison table responsive */
+    .comparison-table-container {
+        padding: 1rem;
+    }
+    
+    .comparison-table-container h1 {
+        font-size: 2.2rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .comparison-table {
+        padding: 1rem;
+        overflow-x: auto;
+    }
+    
+    .comparison-table table {
+        font-size: 0.9rem;
+        min-width: 800px;
+    }
+    
+    .comparison-table th {
+        padding: 0.8rem;
+        font-size: 1rem;
+    }
+    
+    .comparison-table td {
+        padding: 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .scenario-list p {
+        padding: 0.3rem 0;
+        font-size: 0.9rem;
+    }
+    
+    /* Multi-mode responsive */
+    .multi-mode-container {
+        max-width: 100%;
+        gap: 1.5rem;
+    }
+    
+    .mode-explanation {
+        gap: 1.5rem;
+    }
+    
+    .explanation-card p {
+        font-size: 1.1rem;
+    }
+    
+    .scenario-examples {
+        gap: 1rem;
+    }
+    
+    .scenario-item {
+        padding: 1rem;
+    }
+    
+    .scenario-item h4 {
+        font-size: 1.1rem;
+    }
+    
+    .scenario-item p {
+        font-size: 1rem;
+    }
+    
+    .example-placeholder {
+        height: 200px;
     }
 }
