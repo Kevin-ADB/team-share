@@ -43,7 +43,7 @@ const FPV: React.FC = () => {
           <div className="fpv-intro">
             <div className="fpv-definition">
               <div className="definition-item">
-                <h3>🎥 FPV 是什么？</h3>
+                <h3>🎥 FPV</h3>
                 <p>First Person View - 第一人称视角，通过机载摄像头实时传输画面到飞手眼镜或屏幕</p>
               </div>
               <div className="definition-item">
@@ -56,58 +56,63 @@ const FPV: React.FC = () => {
       )
     },
     {
-      id: 'slide-3',
-      title: 'FPV 与普通无人机的区别',
+      id: 'slide-3.1',
+      title: 'FPV Drone 与其它无人机的区别',
       content: (
         <div className="slide-content">
           <div className="slide-title">
-            <h1>FPV 与普通无人机的区别</h1>
+            <h1>FPV Drone 与其它无人机的区别（操控篇）</h1>
           </div>
           <div className="comparison-table-container">
             <div className="comparison-table">
               <table>
                 <thead>
                   <tr>
-                    <th>对比维度</th>
-                    <th>FPV 无人机</th>
-                    <th>普通无人机</th>
+                    <th></th>
+                    <th>其它无人机</th>
+                    <th>FPV Drone</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td><strong>操控方式</strong></td>
                     <td>
-                      <strong>纯手动 (Acro模式)</strong>：完全依赖飞手手动控制所有姿态，无自动辅助，可实现任意角度、高机动飞行，门槛极高。
+                      <div className="scenario-list">
+                        <p>
+                          <strong>自动稳定飞行</strong>：大多数民用无人机（如航拍无人机）提供自动稳定功能，飞手只需控制方向和速度，飞行器会自动保持水平和一定的高度。
+                        </p>
+                        <p>
+                          <strong>全自动飞行模式</strong>：大多数民用无人机（如航拍无人机）提供多种自动飞行模式，如定点悬停、路径规划、跟随拍摄等，飞手只需设置好参数，飞行器会自动完成飞行任务。
+                        </p>
+                      </div>
                     </td>
                     <td>
-                      <strong>自稳模式</strong>：依赖<strong>GPS、气压计、视觉传感器</strong>等系统自动保持姿态、位置稳定，操作简化，易于上手。
+                      <div className="scenario-list">
+                        <p>
+                          <strong>Angle 模式（自稳模式）</strong>: 飞行器提供基本的姿态稳定，飞手只需控制方向和速度，飞行器会自动保持水平和一定的高度。这种模式适合初学者，降低了操作难度。
+                        </p>
+                        <p>
+                          <strong>Hoorizon 模式（半自稳模式）</strong>: 在 Angle 模式的基础上增加了特技飞行功能，飞手可以通过摇杆实现翻滚、旋转等特技动作，但飞行器仍会在松开摇杆后自动恢复水平。这种模式适合有一定经验的飞手，提供更多的飞行乐趣。
+                        </p>
+                        <p>
+                          <strong>Acro 模式（手动模式）</strong>: 飞行器不提供任何姿态稳定，飞手需要完全控制飞行器的姿态和速度。这种模式适合专业飞手和竞速飞行，提供最大的操控自由度和飞行性能，但也需要较高的飞行技能。
+                        </p>
+                      </div>
                     </td>
                   </tr>
                   <tr>
-                    <td><strong>续航时间</strong></td>
+                    <td><strong>操控特点</strong></td>
                     <td>
-                      <strong>较短</strong>：激烈飞行下通常为 <strong>5到30分钟</strong>。
+                      <div className="scenario-list">
+                        <p><strong>依赖自动化系统</strong>：大多数民用无人机依赖自动化系统进行飞行，飞手只需设置参数即可完成任务。</p>
+                        <p><strong>追求稳定性和安全性</strong>：民用无人机强调飞行的稳定性和安全性，适合拍摄、测绘等任务。</p>
+                      </div>
                     </td>
                     <td>
-                      <strong>较长</strong>：消费级约30分钟以上；工业级或军用级可达数小时至数十小时。
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><strong>成本与规模</strong></td>
-                    <td>
-                      <strong>低成本、高损耗率</strong>：单机成本可低至数百元，设计上可承受高损耗。
-                    </td>
-                    <td>
-                      <strong>高单价、低损耗率</strong>：民用高端机或军用机价格昂贵，被视为重要资产。
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><strong>核心定位与用途</strong></td>
-                    <td>
-                      <strong>沉浸式飞行工具</strong>：追求操控感、灵活性和第一视角的刺激。
-                    </td>
-                    <td>
-                      <strong>自动化作业平台</strong>：注重效率、稳定和任务成果。
+                      <div className="scenario-list">
+                        <p><strong>高度依赖飞手技能</strong>：FPV Drone 最常用的操作模式是 Acro 模式，完全不提供姿态稳定，飞手需要具备较高的飞行技能才能安全操控。</p>
+                        <p><strong>追求操控感</strong>：FPV Drone 强调飞行的操控感，飞手可以通过不同的操控模式体验不同的飞行乐趣。</p>
+                      </div>
                     </td>
                   </tr>
                 </tbody>
@@ -118,34 +123,79 @@ const FPV: React.FC = () => {
       )
     },
     {
-      id: 'slide-4',
-      title: 'FPV 与普通无人机的区别',
+      id: 'slide-3.2',
+      title: 'FPV Drone 与其它无人机的区别（性质篇）',
       content: (
         <div className="slide-content">
           <div className="slide-title">
-            <h1>FPV 与普通无人机的区别</h1>
+            <h1>FPV Drone 与其它无人机的区别（性质篇）</h1>
           </div>
           <div className="comparison-table-container">
             <div className="comparison-table">
               <table>
                 <thead>
                   <tr>
-                    <th>主要用途</th>
-                    <th>FPV 无人机</th>
-                    <th>普通无人机</th>
+                    <th></th>
+                    <th>其它无人机</th>
+                    <th>FPV Drone</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>续航时间</strong></td>
+                    <td>
+                      <strong>较长</strong>：消费级约30分钟以上；工业级或军用级可达数小时至数十小时。
+                    </td>
+                    <td>
+                      <strong>较短</strong>：激烈飞行下通常为 <strong>5到30分钟</strong>。
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>成本</strong></td>
+                    <td>
+                      <strong>高单价、低损耗率</strong>：高端机或军用机价格昂贵，通常设计上更注重耐用性和可靠性，损耗率较低。
+                    </td>
+                    <td>
+                      <strong>低成本、高损耗率</strong>：单机成本可低至数百元，设计上可承受高损耗。
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>核心定位</strong></td>
+                    <td>
+                      <strong>多功能工具</strong>：强调稳定性、自动化和任务执行能力，满足各种应用需求。
+                    </td>
+                    <td>
+                      <strong>沉浸式飞行工具</strong>：追求操控感、灵活性和第一视角的刺激。
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'slide-3.3',
+      title: 'FPV Drone 与其它无人机的区别（用途篇）',
+      content: (
+        <div className="slide-content">
+          <div className="slide-title">
+            <h1>FPV Drone 与其它无人机的区别（用途篇）</h1>
+          </div>
+          <div className="comparison-table-container">
+            <div className="comparison-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>其它无人机</th>
+                    <th>FPV Drone</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td><strong>民用</strong></td>
-                    <td>
-                      <div className="scenario-list">
-                        <p><strong>1. 竞速比赛</strong>：在复杂赛道中竞速穿越。</p>
-                        <p><strong>2. 特技拍摄</strong>：拍摄穿越窗户、树林等极具动感的镜头。</p>
-                        <p><strong>3. 自由穿越飞行</strong>：以第一视角探索复杂地形。</p>
-                        <p><strong>4. 沉浸式体验</strong>：纯粹享受飞行操控乐趣。</p>
-                      </div>
-                    </td>
                     <td>
                       <div className="scenario-list">
                         <p><strong>1. 影视航拍</strong>：平稳拍摄风光、城市全景。</p>
@@ -155,21 +205,28 @@ const FPV: React.FC = () => {
                         <p><strong>5. 农业植保</strong>：自动完成农田的喷洒与监测。</p>
                       </div>
                     </td>
+                    <td>
+                      <div className="scenario-list">
+                        <p><strong>1. 竞速比赛</strong>：在复杂赛道中竞速穿越。</p>
+                        <p><strong>2. 特技拍摄</strong>：拍摄穿越窗户、树林等极具动感的镜头。</p>
+                        <p><strong>3. 自由穿越飞行</strong>：以第一视角探索复杂地形。</p>
+                        <p><strong>4. 沉浸式体验</strong>：纯粹享受飞行操控乐趣。</p>
+                      </div>
+                    </td>
                   </tr>
                   <tr>
                     <td><strong>军用</strong></td>
                     <td>
                       <div className="scenario-list">
-                        <p><strong>1. 战术级突袭与侦察</strong>：快速穿越复杂环境，进行侦察或<strong>自杀式攻击</strong>。</p>
-                        <p><strong>2. 反装甲/反器材</strong>：挂载小型弹头，打击坦克、火炮等目标。</p>
-                        <p><strong>3. 炮兵校射与电子战</strong>：提供实时目标修正或进行近距离干扰。</p>
+                        <p><strong>1. 战略/战役级侦察监视</strong>：长航时、大范围战场监控。</p>
+                        <p><strong>2. 通信中继与后勤运输等</strong>：保障通讯、运输紧急物资。</p>
                       </div>
                     </td>
                     <td>
                       <div className="scenario-list">
-                        <p><strong>1. 战略/战役级侦察监视</strong>：长航时、大范围战场监控（如"全球鹰"）。</p>
-                        <p><strong>2. 精确打击</strong>：挂载导弹进行定点清除（如"死神"无人机）。</p>
-                        <p><strong>3. 通信中继与后勤运输</strong>：保障通讯、运输紧急物资。</p>
+                        <p><strong>1. 战术级突袭与侦察</strong>：快速穿越复杂环境，进行侦察或<strong>自杀式攻击</strong>。</p>
+                        <p><strong>2. 反装甲/反器材</strong>：挂载小型弹头，打击坦克、火炮等目标。</p>
+                        <p><strong>3. 炮兵校射与电子战</strong>：提供实时目标修正或进行近距离干扰。</p>
                       </div>
                     </td>
                   </tr>
@@ -181,39 +238,7 @@ const FPV: React.FC = () => {
       )
     },
     {
-      id: 'slide-5',
-      title: '无人机的飞行模式',
-      content: (
-        <div className="slide-content">
-          <div className="slide-title">
-            <h1>无人机的操控模式</h1>
-          </div>
-          <div className="multi-mode-container">
-            <div className="mode-explanation">
-              <div className="explanation-card">
-                <h3>🔄 FPV 只是一种“操控模式”</h3>
-                <p>市面上的成品无人机通常支持多种操作模式，但支持单一操作模式的无人机中，FPV 更为常见。</p>
-              </div>
-              <div className="explanation-card">
-                <h3>🌰 应用场景</h3>
-                <div className="scenario-examples">
-                  <div className="scenario-item">
-                    <h4>🚀 抛飞操作</h4>
-                    <p>抛出 ➡️ 自稳模式开机 ➡️ 机身稳定 ➡️ 开 FPV 模式</p>
-                  </div>
-                  <div className="scenario-item">
-                    <h4>🔋 安全保护</h4>
-                    <p>低电/无信号保护：任何模式 ➡️ 自动回收</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )
-    },
-    {
-      id: 'slide-6',
+      id: 'slide-4.1',
       title: '入坑指"难" -- 人财两空',
       content: (
         <div className="slide-content">
@@ -233,7 +258,7 @@ const FPV: React.FC = () => {
                 <div className="step-number">2</div>
                 <div className="step-content">
                   <h3>没钱</h3>
-                  <p>炸机、飞丢、多设备</p>
+                  <p>炸机、飞丢、新设备</p>
                 </div>
               </div>
             </div>
@@ -242,7 +267,7 @@ const FPV: React.FC = () => {
       )
     },
     {
-      id: 'slide-7',
+      id: 'slide-4.2',
       title: '入坑指"难" -- 猫一天狗一天',
       content: (
         <div className="slide-content">
@@ -309,7 +334,64 @@ const FPV: React.FC = () => {
       )
     },
     {
-      id: 'slide-8',
+      id: 'slide-4.3',
+      title: '入坑指"难" -- 合法飞行',
+      content: (
+        <div className="slide-content">
+          <div className="slide-title">
+            <h1>入坑指"难" -- 合法飞行</h1>
+          </div>
+          <div className="comparison-table-container">
+            <div className="info-container">
+              <div className="info-card">
+                <div className="info-header">
+                  <h3>🏠 室内</h3>
+                </div>
+                <div className="info-content">
+                  <div className="info-list">
+                    <div className="info-item">
+                      <div className="info-icon">🏠</div>
+                      <div className="info-text">
+                        <strong>不受管制</strong>：室内随便飞
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="info-card">
+                <div className="info-header">
+                  <h3>🟦 适飞空域（UOM 平台查询蓝色适飞空域）</h3>
+                </div>
+                <div className="info-content">
+                  <div className="info-list">
+                    <div className="info-item">
+                      <div className="info-icon">✅</div>
+                      <div className="info-text">
+                        <strong>120米以下飞行</strong>：微型（&lt;250g）、轻型（250g-4kg）无人机<strong>无需报备</strong>
+                      </div>
+                    </div>
+                    <div className="info-item">
+                      <div className="info-icon">📋</div>
+                      <div className="info-text">
+                        <strong>小型无人机（4kg-150kg）</strong>：需要事先<strong>考证</strong>，但同样<strong>无需报备</strong>
+                      </div>
+                    </div>
+                    <div className="info-item">
+                      <div className="info-icon">🗂️</div>
+                      <div className="info-text">
+                        <strong>其它情况</strong>：均需提前<strong>申请报备</strong>（审批通过难度众说纷纭，我还没试过）
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'slide-4.4',
       title: '入坑指"难" -- 入坑拢共分三步',
       content: (
         <div className="slide-content">
@@ -348,7 +430,7 @@ const FPV: React.FC = () => {
       )
     },
     {
-      id: 'slide-9',
+      id: 'slide-5',
       title: '操控与原理',
       content: (
         <div className="slide-content">
