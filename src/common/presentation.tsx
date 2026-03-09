@@ -1,4 +1,5 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState, useRef } from 'react';
+import { HashRouterParam } from './hash-router';
 import '../styles/presentation.css';
 
 export interface ISlide {
@@ -12,26 +13,35 @@ export interface IPresentationProps {
 }
 
 const Presentation: React.FC<IPresentationProps> = ({ slides }) => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const totalSlides = slides.length;
+  const endSlideIndex = slides.length;
+  const slideParam = useRef(new HashRouterParam('slide'));
+  const [currentSlide, setCurrentSlideState] = useState(() => {
+    const hashSlide = slideParam.current.getNumericValue();
+    return Math.min(Math.max(hashSlide, 0), endSlideIndex);
+  });
 
   const nextSlide = useCallback(() => {
-    if (currentSlide < totalSlides - 1) {
-      setCurrentSlide(currentSlide + 1);
+    if (currentSlide < endSlideIndex) {
+      const newSlide = currentSlide + 1;
+      setCurrentSlideState(newSlide);
+      slideParam.current.setNumericValue(newSlide);
     }
-  }, [currentSlide, totalSlides]);
+  }, [currentSlide, endSlideIndex]);
 
   const previousSlide = useCallback(() => {
     if (currentSlide > 0) {
-      setCurrentSlide(currentSlide - 1);
+      const newSlide = currentSlide - 1;
+      setCurrentSlideState(newSlide);
+      slideParam.current.setNumericValue(newSlide);
     }
   }, [currentSlide]);
 
   const goToSlide = useCallback((slideIndex: number) => {
-    if (slideIndex >= 0 && slideIndex < totalSlides) {
-      setCurrentSlide(slideIndex);
+    if (slideIndex >= 0 && slideIndex <= endSlideIndex) {
+      setCurrentSlideState(slideIndex);
+      slideParam.current.setNumericValue(slideIndex);
     }
-  }, [totalSlides]);
+  }, [endSlideIndex]);
 
   // 键盘导航
   useEffect(() => {
@@ -53,7 +63,7 @@ const Presentation: React.FC<IPresentationProps> = ({ slides }) => {
           goToSlide(0);
           break;
         case 'End':
-          goToSlide(totalSlides - 1);
+          goToSlide(endSlideIndex);
           break;
       }
     };
@@ -62,7 +72,20 @@ const Presentation: React.FC<IPresentationProps> = ({ slides }) => {
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [nextSlide, previousSlide, goToSlide, totalSlides]);
+  }, [nextSlide, previousSlide, goToSlide, endSlideIndex]);
+
+  // 监听 hash 变化
+  useEffect(() => {
+    const cleanup = slideParam.current.onChange(() => {
+      const newSlide = slideParam.current.getNumericValue();
+      const boundedSlide = Math.min(Math.max(newSlide, 0), endSlideIndex);
+      if (boundedSlide !== currentSlide) {
+        setCurrentSlideState(boundedSlide);
+      }
+    });
+
+    return cleanup;
+  }, [currentSlide, endSlideIndex]);
 
   // 鼠标点击导航
   useEffect(() => {
@@ -132,22 +155,24 @@ const Presentation: React.FC<IPresentationProps> = ({ slides }) => {
     };
   }, [nextSlide, previousSlide]);
 
-  const progressPercentage = ((currentSlide + 1) / totalSlides) * 100;
-
   return (
     <div className="presentation-container">
-      {/* Progress bar */}
-      <div className="progress-bar">
-        <div 
-          className="progress" 
-          style={{ width: `${progressPercentage}%` }}
-        ></div>
-      </div>
+      {currentSlide < slides.length && (
+        <>
+          {/* Progress bar */}
+          <div className="progress-bar">
+            <div 
+              className="progress" 
+              style={{ width: `${((currentSlide + 1) / slides.length) * 100}%` }}
+            ></div>
+          </div>
 
-      {/* Page number */}
-      <div className="page-number">
-        {currentSlide + 1} / {totalSlides}
-      </div>
+          {/* Page number */}
+          <div className="page-number">
+            {currentSlide + 1} / {slides.length}
+          </div>
+        </>
+      )}
 
       {/* Slides */}
       {slides.map((slide, index) => (
@@ -159,6 +184,20 @@ const Presentation: React.FC<IPresentationProps> = ({ slides }) => {
           {slide.content}
         </div>
       ))}
+
+      {/* Black screen at the end */}
+      <div
+        className={`slide ${currentSlide === slides.length ? 'active' : ''}`}
+        id="black-screen"
+        style={{
+          backgroundColor: '#000',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          color: '#333',
+          fontSize: '2rem'
+        }}
+      />
     </div>
   );
 };

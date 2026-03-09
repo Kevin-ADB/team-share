@@ -1,6 +1,9 @@
 import React from 'react';
 import Presentation, { ISlide } from '../../common/presentation';
 import '../../styles/fpv.css';
+import ControllerSvg from './svg-controller';
+import DroneSvg from './svg-drone';
+import PropellerGroupSvg from './svg-propeller-group';
 
 const FPV: React.FC = () => {
   const slides: ISlide[] = [
@@ -30,7 +33,7 @@ const FPV: React.FC = () => {
             </div>
           </div>
         </div>
-      )
+      ),
     },
     {
       id: 'slide-2',
@@ -43,33 +46,37 @@ const FPV: React.FC = () => {
           <div className="fpv-intro">
             <div className="fpv-definition">
               <div className="definition-item">
-                <h3>🎥 FPV</h3>
-                <p>First Person View - 第一人称视角，通过机载摄像头实时传输画面到飞手眼镜或屏幕</p>
+                <h3>FPV</h3>
+                <p>First Person View</p>
               </div>
               <div className="definition-item">
-                <h3>🎮 飞行体验</h3>
-                <p>就像坐在飞机驾驶舱里一样，以飞行器的视角看世界，带来沉浸式的飞行体验</p>
+                <h3>FPV Drone</h3>
+                <p>
+                  现在一般特指
+                  <strong>穿越机</strong>
+                  ，即多旋翼无人机的一种，强调飞行的操控感和第一视角的体验
+                </p>
               </div>
             </div>
           </div>
         </div>
-      )
+      ),
     },
     {
       id: 'slide-3.1',
-      title: 'FPV Drone 与其它无人机的区别',
+      title: 'FPV Drone 与其它多旋翼无人机的区别',
       content: (
         <div className="slide-content">
           <div className="slide-title">
-            <h1>FPV Drone 与其它无人机的区别（操控篇）</h1>
+            <h1>FPV Drone 与其它多旋翼无人机的区别（操控篇）</h1>
           </div>
           <div className="comparison-table-container">
-            <div className="comparison-table">
+            <div className="table comparison-table">
               <table>
                 <thead>
                   <tr>
                     <th></th>
-                    <th>其它无人机</th>
+                    <th>其它多旋翼无人机</th>
                     <th>FPV Drone</th>
                   </tr>
                 </thead>
@@ -79,23 +86,23 @@ const FPV: React.FC = () => {
                     <td>
                       <div className="scenario-list">
                         <p>
-                          <strong>自动稳定飞行</strong>：大多数民用无人机（如航拍无人机）提供自动稳定功能，飞手只需控制方向和速度，飞行器会自动保持水平和一定的高度。
+                          <strong>自动稳定飞行</strong>：大多数供自动稳定功能，飞手只需控制方向和速度，飞行器会自动保持水平和一定的高度。
                         </p>
                         <p>
-                          <strong>全自动飞行模式</strong>：大多数民用无人机（如航拍无人机）提供多种自动飞行模式，如定点悬停、路径规划、跟随拍摄等，飞手只需设置好参数，飞行器会自动完成飞行任务。
+                          <strong>全自动飞行模式</strong>：有些提供预设的飞行模式，如环绕、跟随、定点等，只需设置好参数，飞行器会自动执行相应的飞行任务。
                         </p>
                       </div>
                     </td>
                     <td>
                       <div className="scenario-list">
-                        <p>
+                        <p className="primary-mode">
+                          <strong>Acro 模式（手动模式）</strong>: 飞行器不主动提供任何姿态稳定，飞手需要完全控制飞行器的姿态和速度。这种模式适合专业飞手和竞速飞行，提供最大的操控自由度和飞行性能，但需要较高的飞行技能。
+                        </p>
+                        <p className="secondary-mode">
                           <strong>Angle 模式（自稳模式）</strong>: 飞行器提供基本的姿态稳定，飞手只需控制方向和速度，飞行器会自动保持水平和一定的高度。这种模式适合初学者，降低了操作难度。
                         </p>
-                        <p>
-                          <strong>Hoorizon 模式（半自稳模式）</strong>: 在 Angle 模式的基础上增加了特技飞行功能，飞手可以通过摇杆实现翻滚、旋转等特技动作，但飞行器仍会在松开摇杆后自动恢复水平。这种模式适合有一定经验的飞手，提供更多的飞行乐趣。
-                        </p>
-                        <p>
-                          <strong>Acro 模式（手动模式）</strong>: 飞行器不提供任何姿态稳定，飞手需要完全控制飞行器的姿态和速度。这种模式适合专业飞手和竞速飞行，提供最大的操控自由度和飞行性能，但也需要较高的飞行技能。
+                        <p className="secondary-mode">
+                          <strong>Horizon 模式（半自稳模式）</strong>: 结合了 Acro 和 Angle 模式的特点，飞行器在小幅度操作时提供姿态稳定，在大幅度操作时允许翻滚等特技动作。这种模式适合有一定飞行经验的飞手，既能享受操控感又不失安全性。
                         </p>
                       </div>
                     </td>
@@ -110,7 +117,7 @@ const FPV: React.FC = () => {
                     </td>
                     <td>
                       <div className="scenario-list">
-                        <p><strong>高度依赖飞手技能</strong>：FPV Drone 最常用的操作模式是 Acro 模式，完全不提供姿态稳定，飞手需要具备较高的飞行技能才能安全操控。</p>
+                        <p><strong>高度依赖飞手技能</strong>：FPV Drone 最常用的操作模式是 Acro 模式，几乎不提供姿态稳定，飞手需要具备比较熟练的飞行技能才能安全操控。</p>
                         <p><strong>追求操控感</strong>：FPV Drone 强调飞行的操控感，飞手可以通过不同的操控模式体验不同的飞行乐趣。</p>
                       </div>
                     </td>
@@ -120,23 +127,23 @@ const FPV: React.FC = () => {
             </div>
           </div>
         </div>
-      )
+      ),
     },
     {
       id: 'slide-3.2',
-      title: 'FPV Drone 与其它无人机的区别（性质篇）',
+      title: 'FPV Drone 与其它多旋翼无人机的区别（性质篇）',
       content: (
         <div className="slide-content">
           <div className="slide-title">
-            <h1>FPV Drone 与其它无人机的区别（性质篇）</h1>
+            <h1>FPV Drone 与其它多旋翼无人机的区别（性质篇）</h1>
           </div>
           <div className="comparison-table-container">
-            <div className="comparison-table">
+            <div className="table comparison-table">
               <table>
                 <thead>
                   <tr>
                     <th></th>
-                    <th>其它无人机</th>
+                    <th>其它多旋翼无人机</th>
                     <th>FPV Drone</th>
                   </tr>
                 </thead>
@@ -173,23 +180,23 @@ const FPV: React.FC = () => {
             </div>
           </div>
         </div>
-      )
+      ),
     },
     {
       id: 'slide-3.3',
-      title: 'FPV Drone 与其它无人机的区别（用途篇）',
+      title: 'FPV Drone 与其它多旋翼无人机的区别（用途篇）',
       content: (
         <div className="slide-content">
           <div className="slide-title">
-            <h1>FPV Drone 与其它无人机的区别（用途篇）</h1>
+            <h1>FPV Drone 与其它多旋翼无人机的区别（用途篇）</h1>
           </div>
           <div className="comparison-table-container">
-            <div className="comparison-table">
+            <div className="table comparison-table">
               <table>
                 <thead>
                   <tr>
                     <th></th>
-                    <th>其它无人机</th>
+                    <th>其它多旋翼无人机</th>
                     <th>FPV Drone</th>
                   </tr>
                 </thead>
@@ -235,7 +242,7 @@ const FPV: React.FC = () => {
             </div>
           </div>
         </div>
-      )
+      ),
     },
     {
       id: 'slide-4.1',
@@ -264,7 +271,7 @@ const FPV: React.FC = () => {
             </div>
           </div>
         </div>
-      )
+      ),
     },
     {
       id: 'slide-4.2',
@@ -275,7 +282,7 @@ const FPV: React.FC = () => {
             <h1>入坑指"难" -- 猫一天狗一天</h1>
           </div>
           <div className="comparison-table-container">
-            <div className="comparison-table">
+            <div className="table comparison-table">
               <table>
                   <thead>
                     <tr>
@@ -331,7 +338,7 @@ const FPV: React.FC = () => {
               </div>
             </div>
           </div>
-      )
+      ),
     },
     {
       id: 'slide-4.3',
@@ -360,7 +367,7 @@ const FPV: React.FC = () => {
               </div>
               <div className="info-card">
                 <div className="info-header">
-                  <h3>🟦 适飞空域（UOM 平台查询蓝色适飞空域）</h3>
+                  <h3>🟦 适飞空域（<a href="https://uom.caac.gov.cn" target="_blank" rel="noopener noreferrer">UOM 平台</a>查询蓝色适飞空域）</h3>
                 </div>
                 <div className="info-content">
                   <div className="info-list">
@@ -388,7 +395,7 @@ const FPV: React.FC = () => {
             </div>
           </div>
         </div>
-      )
+      ),
     },
     {
       id: 'slide-4.4',
@@ -420,29 +427,210 @@ const FPV: React.FC = () => {
               <div className="step-card">
                 <div className="step-number">3</div>
                 <div className="step-content">
-                  <h3>真入</h3>
+                  <h3>入</h3>
                   <p>DIY、花飞、竞速、裸眼，等等</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      )
+      ),
     },
     {
       id: 'slide-5',
-      title: '操控与原理',
+      title: '固定翼飞机的飞行原理',
       content: (
         <div className="slide-content">
           <div className="slide-title">
-            <h1>操控与原理</h1>
+            <h1>固定翼飞机的飞行原理</h1>
+          </div>
+          <img 
+            src="/images/fpv-001.jpg" 
+            alt="固定翼飞机飞行原理示意图"
+            className="principle-image"
+          />
+        </div>
+      ),
+    },
+    {
+      id: 'slide-6',
+      title: '遥控器以及操作映射',
+      content: (
+        <div className="slide-content">
+          <div className="slide-title">
+            <h1>遥控器以及操作映射</h1>
+          </div>
+          <div className="step-card">
+            <div className="step-content">
+              <h3>（遥控器展示环节）</h3>
+            </div>
           </div>
           <div className="comparison-table-container">
-            {/* 内容待添加 */}
+            <div className="table compact-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>姿态控制</th>
+                    <th>操控项</th>
+                    <th>美国手（Mode 2）</th>
+                    <th>日本手（Mode 1）</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>横滚（Roll）</strong></td>
+                    <td><strong>副翼（Aileron，A）</strong></td>
+                    <td><ControllerSvg width={160} height={80} rightStickHighlights={{ left: 'negative', right: 'positive' }} /></td>
+                    <td className="obscured-column"><ControllerSvg width={160} height={80} leftStickHighlights={{ left: 'negative', right: 'positive' }} /></td>
+                  </tr>
+                  <tr>
+                    <td><strong>俯仰（Pitch）</strong></td>
+                    <td><strong>升降舵（Elevator，E）</strong></td>
+                    <td><ControllerSvg width={160} height={80} rightStickHighlights={{ up: 'positive', down: 'negative' }} /></td>
+                    <td className="obscured-column"><ControllerSvg width={160} height={80} leftStickHighlights={{ up: 'positive', down: 'negative' }} /></td>
+                  </tr>
+                  <tr className="throttle-row">
+                    <td><strong>油门（Throttle）</strong></td>
+                    <td><strong>油门（Throttle，T）</strong></td>
+                    <td><ControllerSvg width={160} height={80} leftStickHighlights={{ up: 'positive', down: 'negative' }} /></td>
+                    <td className="obscured-column"><ControllerSvg width={160} height={80} rightStickHighlights={{ up: 'positive', down: 'negative' }} /></td>
+                  </tr>
+                  <tr>
+                    <td><strong>偏航（Yaw）</strong></td>
+                    <td><strong>方向舵（Rudder，R）</strong></td>
+                    <td><ControllerSvg width={160} height={80} leftStickHighlights={{ left: 'negative', right: 'positive' }} /></td>
+                    <td className="obscured-column"><ControllerSvg width={160} height={80} rightStickHighlights={{ left: 'negative', right: 'positive' }} /></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
-      )
-    }
+      ),
+    },
+    {
+      id: 'slide-7',
+      title: 'FPV Drone 的硬件构成',
+      content: (
+        <div className="slide-content">
+          <div className="slide-title">
+            <h1>FPV Drone 的硬件构成</h1>
+          </div>
+          <div className="comparison-table-container">
+            <div className="two-column-layout">
+              <div>
+                <div className="component-list">
+                  <div>• 机架</div>
+                  <div>• 摄像头 + 图传、天线</div>
+                  <div>• 飞行控制器 + 接收机</div>
+                  <div>• 桨叶 + 电机、电子调速器</div>
+                  <div>• 电池</div>
+                  <div style={{ fontSize: '0.9em', marginTop: '10px', borderLeft: 'none', paddingLeft: '0' }}>
+                    （<strong>飞行控制器</strong>自带<strong>陀螺仪</strong>和<strong>加速度计</strong>，有时甚至自带<strong>电子调速器</strong>。）
+                  </div>
+                </div>
+              </div>
+              <img
+                src="/images/fpv-002.jpg"
+                alt="FPV Drone 构成示意图"
+                className="principle-image-compact"
+              />
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    {
+      id: 'slide-8',
+      title: 'FPV Drone 的飞行原理',
+      content: (
+        <div className="slide-content">
+          <div className="slide-title">
+            <h1>FPV Drone 的飞行原理</h1>
+          </div>
+          <div className="comparison-table-container">
+            <div className="drone-diagram-container">
+              <DroneSvg />
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    {
+      id: 'slide-9',
+      title: 'FPV Drone 的操控及原理',
+      content: (
+        <div className="slide-content">
+          <div className="slide-title">
+            <h1>FPV Drone 的操控及原理</h1>
+          </div>
+          <div className="comparison-table-container">
+            <div className="table compact-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>姿态控制</th>
+                    <th>操控项（名称）</th>
+                    <th>控制器（美国手）</th>
+                    <th>桨叶组合</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>横滚（Roll）</strong></td>
+                    <td><strong>副翼（Aileron，A）</strong></td>
+                    <td><ControllerSvg width={160} height={80} rightStickHighlights={{ left: 'negative', right: 'positive' }} /></td>
+                    <td><PropellerGroupSvg positives={{ frontLeft: true, backLeft: true }} /></td>
+                  </tr>
+                  <tr>
+                    <td><strong>俯仰（Pitch）</strong></td>
+                    <td><strong>升降舵（Elevator，E）</strong></td>
+                    <td><ControllerSvg width={160} height={80} rightStickHighlights={{ up: 'positive', down: 'negative' }} /></td>
+                    <td><PropellerGroupSvg positives={{ backLeft: true, backRight: true }} /></td>
+                  </tr>
+                  <tr className="throttle-row">
+                    <td><strong>油门（Throttle）</strong></td>
+                    <td><strong>油门（Throttle，T）</strong></td>
+                    <td><ControllerSvg width={160} height={80} leftStickHighlights={{ up: 'positive', down: 'negative' }} /></td>
+                    <td><PropellerGroupSvg positives={{ frontLeft: true, frontRight: true, backLeft: true, backRight: true }} /></td>
+                  </tr>
+                  <tr>
+                    <td><strong>偏航（Yaw）</strong></td>
+                    <td><strong>方向舵（Rudder，R）</strong></td>
+                    <td><ControllerSvg width={160} height={80} leftStickHighlights={{ left: 'negative', right: 'positive' }} /></td>
+                    <td><PropellerGroupSvg positives={{ frontRight: true, backLeft: true }} /></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div className="step-card">
+            <div className="step-content">
+              <h3>（再简单说一下 AirMode 的事儿）</h3>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    {
+      id: 'slide-10',
+      title: '看看视频 + Q & A',
+      content: (
+        <div className="slide-content">
+          <div className="slide-title">
+            <h1>看看视频 + Q & A</h1>
+          </div>
+          <div className="comparison-table-container">
+            <div className="component-list">
+              <div>• <a href="https://www.bilibili.com/video/BV1ZPTTzEER7" target="_blank" rel="noopener noreferrer">新人入门必练模拟器</a></div>
+              <div>• <a href="https://www.bilibili.com/video/BV1vtimYdExX" target="_blank" rel="noopener noreferrer">10 小时留念</a></div>
+              <div>• <a href="https://www.bilibili.com/video/BV1bWcze9EDJ" target="_blank" rel="noopener noreferrer">46 小时留念</a></div>
+              <div>• <a href="" target="_blank" rel="noopener noreferrer">“颐和园”的真机</a></div>
+            </div>
+          </div>
+        </div>
+      ),
+    },
   ];
 
   return (
