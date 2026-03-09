@@ -1,6 +1,7 @@
 import React from 'react';
 import Presentation, { ISlide } from '../../common/presentation';
 import '../../styles/fpv.css';
+import { BASE_URL } from './common';
 import ControllerSvg from './svg-controller';
 import DroneSvg from './svg-drone';
 import PropellerGroupSvg from './svg-propeller-group';
@@ -445,7 +446,7 @@ const FPV: React.FC = () => {
             <h1>固定翼飞机的飞行原理</h1>
           </div>
           <img 
-            src="/images/fpv-001.jpg" 
+            src={`${BASE_URL}images/fpv-001.jpg`} 
             alt="固定翼飞机飞行原理示意图"
             className="principle-image"
           />
@@ -531,7 +532,7 @@ const FPV: React.FC = () => {
                 </div>
               </div>
               <img
-                src="/images/fpv-002.jpg"
+                src={`${BASE_URL}images/fpv-002.jpg`}
                 alt="FPV Drone 构成示意图"
                 className="principle-image-compact"
               />
