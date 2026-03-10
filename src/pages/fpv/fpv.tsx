@@ -338,7 +338,12 @@ const FPV: React.FC = () => {
                 </table>
               </div>
             </div>
+          <div className="step-card">
+            <div className="step-content">
+              <h3>从 2026 年开始，无人机正在从“兴趣设备”被当成“公共空间设备”来管理。</h3>
+            </div>
           </div>
+        </div>
       ),
     },
     {
