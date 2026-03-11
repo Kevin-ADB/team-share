@@ -619,6 +619,62 @@ const FPV: React.FC = () => {
       ),
     },
     {
+      id: 'slide-9.1',
+      title: 'FPV Drone 的操控及原理（续）',
+      content: (
+        <div className="slide-content">
+          <div className="slide-title">
+            <h1>FPV Drone 的操控及原理（续）</h1>
+          </div>
+          <div className="comparison-table-container">
+            <div className="info-container">
+              <div className="info-card">
+                <div className="info-header">
+                  <h3>牛顿力学三大定律</h3>
+                </div>
+                <div className="info-content">
+                  <div className="info-list">
+                    <div className="info-item">
+                      <div className="info-icon">1</div>
+                      <div className="info-text">
+                        <strong>惯性定律</strong>：物体在不受外力作用时，保持静止或匀速直线运动状态。
+                      </div>
+                    </div>
+                    <div className="info-item">
+                      <div className="info-icon">2</div>
+                      <div className="info-text">
+                        <strong>加速度定律</strong>：物体的加速度与所受合力成正比，与质量成反比。F = ma
+                      </div>
+                    </div>
+                    <div className="info-item">
+                      <div className="info-icon">3</div>
+                      <div className="info-text">
+                        <strong>作用力与反作用力</strong>：两个物体之间的作用力和反作用力，大小相等、方向相反。
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="info-card">
+                <div className="info-header">
+                  <h3>向量加法</h3>
+                </div>
+                <div className="info-content">
+                  <div className="info-list">
+                    <div className="info-item">
+                      <div className="info-text">
+                        多个力同时作用于物体时，合力等于各分力的向量之和。方向相同则相加，方向相反则相减，不同方向则遵循平行四边形法则。
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    {
       id: 'slide-10',
       title: '看看视频 + Q & A',
       content: (
