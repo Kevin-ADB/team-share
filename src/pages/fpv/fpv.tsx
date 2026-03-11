@@ -527,10 +527,10 @@ const FPV: React.FC = () => {
               <div>
                 <div className="component-list">
                   <div>• 机架</div>
-                  <div>• 摄像头 + 图传、天线</div>
-                  <div>• 飞行控制器 + 接收机</div>
-                  <div>• 桨叶 + 电机、电子调速器</div>
                   <div>• 电池</div>
+                  <div>• 桨叶 + 电机、电子调速器</div>
+                  <div>• 飞行控制器 + 接收机</div>
+                  <div>• 摄像头 + 图传、天线</div>
                   <div style={{ fontSize: '0.9em', marginTop: '10px', borderLeft: 'none', paddingLeft: '0' }}>
                     （<strong>飞行控制器</strong>自带<strong>陀螺仪</strong>和<strong>加速度计</strong>，有时甚至自带<strong>电子调速器</strong>。）
                   </div>
@@ -610,11 +610,6 @@ const FPV: React.FC = () => {
               </table>
             </div>
           </div>
-          <div className="step-card">
-            <div className="step-content">
-              <h3>（再简单说一下 AirMode 的事儿）</h3>
-            </div>
-          </div>
         </div>
       ),
     },
@@ -668,6 +663,24 @@ const FPV: React.FC = () => {
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    {
+      id: 'slide-9.3',
+      title: 'FPV Drone 的操控及原理（再续）',
+      content: (
+        <div className="slide-content">
+          <div className="slide-title">
+            <h1>FPV Drone 的操控及原理（再续）</h1>
+          </div>
+          <div className="comparison-table-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flex: 1 }}>
+            <div className="step-card">
+              <div className="step-content">
+                <h3>AirMode</h3>
               </div>
             </div>
           </div>
